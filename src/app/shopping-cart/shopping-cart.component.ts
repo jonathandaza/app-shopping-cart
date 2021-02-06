@@ -8,7 +8,7 @@ import { LocalStorageService } from '../share/services/local-storage.service';
   styleUrls: ['./shopping-cart.component.sass']
 })
 export class ShoppingCartComponent implements OnInit {
-
+  
   total: number = 0;
   products: Array<any>= new Array<any>();
   shoppingCarts: Array<any> = new Array<any>();
@@ -23,18 +23,19 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit(): void {
     this.loadCart();
   }
-
-  /*
-    removes a product from the shopping cart and calculates the total
+  
+ /**
+  * removes a product from the shopping cart and calculates the total
+  * @param productName : name of the product
   */
   remove(productName: string)
   {
-    this.shoppingCarts.splice(this.shoppingCarts.findIndex(p => p.name == productName), 1);
+    this.shoppingCarts.splice(this.shoppingCarts.findIndex(p => p.name === productName), 1);
     this.setTotal();
   }  
-
-  /* 
-    loads the shopping cart from local storage, if it has not been saved, creates a new instance
+  
+ /**
+  * loads the shopping cart from local storage, if it has not been saved, creates a new instance
   */
   loadCart()
   { 
@@ -45,12 +46,13 @@ export class ShoppingCartComponent implements OnInit {
       this.shoppingCarts = new Array<any>();
     }
   }
-
-  /*
-    adds a new product and calculates the total
+  
+ /**
+  * adds a new product and calculates the total
+  * @param product : a product to be added to the shopping cart
   */
   addProduct(product: any) {
-    const item =  this.shoppingCarts.find(p => p.name == product.name);
+    const item =  this.shoppingCarts.find(p => p.name === product.name);
         
     if (item) {
       item.quantity ++;
@@ -60,8 +62,8 @@ export class ShoppingCartComponent implements OnInit {
     this.setTotal();
   }
 
-  /*
-    calculates the total and save shopping cart array to local storage   
+ /**
+  * calculates the total and save shopping cart array to local storage   
   */
   public setTotal() {
     this.total = this.shoppingCarts.reduce((sum, current) => sum + (current.price * current.quantity), 0);
@@ -69,9 +71,9 @@ export class ShoppingCartComponent implements OnInit {
 
     this.save();
   }
-
-  /*
-    saves shopping cart to local storage 
+  
+ /**
+  * saves shopping cart to local storage 
   */
   save()
   {

@@ -6,17 +6,24 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
   constructor() { }
 
-  readonly CART = "SHOPPING_CART" ;
+  readonly CART = 'SHOPPING_CART';
 
-  public add(shoppingCart : Array<any>)
+  /**
+   * adds a shopping cart collection to local storage
+   * @param shoppingCart a collection of kind 'shopping cart'
+   */
+  public add(shoppingCart :Array<any>)
   {    
     localStorage.setItem(this.CART, JSON.stringify(shoppingCart));
   }
 
+  /**
+   * gets the shopping cart collection from local storage
+   */
   public get()
   {
-    let shoppingCart = localStorage.getItem(this.CART);
-    if (shoppingCart != null)
+    const shoppingCart = localStorage.getItem(this.CART);
+    if (shoppingCart)
       return JSON.parse(shoppingCart);
   }
 }

@@ -22,9 +22,10 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  /*
-    adds a new product to shopping cart 
+  
+ /**
+  * adds a new product to shopping cart 
+  * @param product: @product object  to emit forward the parent
   */
   add(product: any)
   {

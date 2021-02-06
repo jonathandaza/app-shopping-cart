@@ -31,6 +31,9 @@ export class ProductService {
 
   constructor() { }
 
+  /**
+   * gets the whole products 
+   */
   public getAll()
   {
     return this.products;
