@@ -1,0 +1,16 @@
+<table class="table table-hover">
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>
+              <div>{{product.name}}</div>
+            </td>
+            <td>
+              <div>{{product.price | currency}}</div>
+            </td>
+            <td>
+                <div><a class="navbar-toggler" data-toggle="tooltip" data-placement="right" title="Add" 
+                  (click)="add(product)" href="#">&#x2B;</a></div>
+            </td>
+          </tr>
+    </tbody>
+</table>
